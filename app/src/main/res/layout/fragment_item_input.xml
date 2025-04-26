@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ItemInputFragment">
+
+    <EditText
+        android:id="@+id/newName"
+        android:layout_width="370dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="150dp"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="@string/name"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
+        tools:ignore="Autofill,LabelFor" />
+
+    <EditText
+        android:id="@+id/newDesc"
+        android:layout_width="370dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="210dp"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="@string/description"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
+        tools:ignore="Autofill,LabelFor" />
+
+    <EditText
+        android:id="@+id/newCat"
+        android:layout_width="370dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="270dp"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="@string/category"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
+        tools:ignore="Autofill,LabelFor" />
+
+    <EditText
+        android:id="@+id/newPay"
+        android:layout_width="370dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="330dp"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="@string/next_payment"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
+        tools:ignore="Autofill,LabelFor" />
+
+    <EditText
+        android:id="@+id/newCycle"
+        android:layout_width="370dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="390dp"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="@string/cycle"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
+        tools:ignore="Autofill,LabelFor" />
+
+    <EditText
+        android:id="@+id/newAmount"
+        android:layout_width="158dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="448dp"
+        android:ems="10"
+        android:hint="@string/amount"
+        android:inputType="text"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="Autofill,LabelFor" />
+
+    <EditText
+        android:id="@+id/newCurrency"
+        android:layout_width="176dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="450dp"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="@string/currency"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.91"
+        tools:ignore="Autofill,LabelFor" />
+
+    <EditText
+        android:id="@+id/newPayMet"
+        android:layout_width="370dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="510dp"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="@string/payment_method"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
+        tools:ignore="Autofill,LabelFor" />
+
+    <EditText
+        android:id="@+id/newRemind"
+        android:layout_width="370dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="570dp"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="@string/remind_me"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
+        tools:ignore="Autofill,LabelFor" />
+
+    <Button
+        android:id="@+id/buttonSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="652dp"
+        android:text="@string/save"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.934" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

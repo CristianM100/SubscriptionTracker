@@ -6,7 +6,7 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
-    <color name="accentDark">#262624</color>
+    <color name="accentDark">#bbbec4</color>
     <color name="statusBar">#14171A</color>
     <color name="mainBG">#9fc5e8</color>
     <color name="widgetColor">#3d85c6</color>
@@ -20,4 +20,8 @@
     <color name="deleteButtonColor">#88EA0404</color>
     <color name="fabButtonColor">#4CDD0E</color>
     <color name="emptyMessageTextColor">#40FFFFFF</color>
+    <color name="circle_blue">#2957e3</color>
+    <color name="circle_green">#29e370</color>
+    <color name="circle_purple">#ca29e3</color>
+    <color name="circle_red">#e32951</color>
 </resources>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/mainFragment">
+
+    <!-- Main Fragment -->
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.subscriptiontracker.MainFragment"
+        android:label="MainFragment"
+        tools:layout="@layout/fragment_main">
+
+        <action
+            android:id="@+id/action_mainFragment_to_itemInputFragment"
+            app:destination="@id/itemInputFragment" />
+
+        <action
+            android:id="@+id/action_mainFragment_to_itemUpdateFragment"
+            app:destination="@id/itemUpdateFragment" />
+    </fragment>
+
+    <!-- Item Input Fragment -->
+    <fragment
+        android:id="@+id/itemInputFragment"
+        android:name="com.example.subscriptiontracker.ItemInputFragment"
+        android:label="Item Input Fragment"
+        tools:layout="@layout/fragment_item_input" />
+
+    <!-- Item Update Fragment -->
+    <fragment
+        android:id="@+id/itemUpdateFragment"
+        android:name="com.example.subscriptiontracker.ItemUpdateFragment"
+        android:label="Item Update Fragment"
+        tools:layout="@layout/fragment_item_update" />
+
+</navigation>
+
+

@@ -18,4 +18,6 @@
     <string name="save">Save</string>
     <string name="calendar_icon">Calendar</string>
     <string name="clock_icon">"Clock "</string>
+    <string name="action_settings">action_settings</string>
+    <string name="subscriptions">Subscriptions</string>
 </resources>
