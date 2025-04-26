@@ -15,6 +15,10 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.navigation.fragment.findNavController
+import java.text.ParseException
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class MainFragment : Fragment(), SubscriptionAdapter.OnItemClickListener {
 
@@ -58,9 +62,16 @@ class MainFragment : Fragment(), SubscriptionAdapter.OnItemClickListener {
                     val name = data.getStringExtra("NEW_ITEM_NAME") ?: ""
                     val desc = data.getStringExtra("NEW_ITEM_DESC") ?: ""
                     val cat = data.getStringExtra("NEW_ITEM_CAT") ?: ""
-                    val pay = data.getStringExtra("NEW_ITEM_PAY") ?: ""
+                    val payString = data.getStringExtra("NEW_ITEM_PAY") ?: ""
+                    val formatter = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                    val pay = try {
+                        formatter.parse(payString) ?: Date()
+                    } catch (e: ParseException) {
+                        Date() // fallback to current date if parsing fails
+                    }
                     val cycle = data.getStringExtra("NEW_ITEM_CYCLE") ?: ""
-                    val amount = data.getStringExtra("NEW_ITEM_AMOUNT") ?: ""
+                    val amountString = data.getStringExtra("NEW_ITEM_AMOUNT") ?: "0"
+                    val amount = amountString.toDoubleOrNull() ?: 0.0
                     val currency = data.getStringExtra("NEW_ITEM_CURRENCY") ?: ""
                     val payMet = data.getStringExtra("NEW_ITEM_PAYMET") ?: ""
                     val remind = data.getStringExtra("NEW_ITEM_REMIND") ?: ""

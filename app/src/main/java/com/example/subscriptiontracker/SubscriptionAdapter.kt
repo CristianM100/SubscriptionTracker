@@ -1,10 +1,13 @@
 package com.example.subscriptiontracker
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class SubscriptionAdapter(private val items: List<SubscriptionItem>, private val listener: OnItemClickListener) :
     RecyclerView.Adapter<SubscriptionAdapter.SubscriptionViewHolder>() {
@@ -34,11 +37,15 @@ class SubscriptionAdapter(private val items: List<SubscriptionItem>, private val
         private val itemCycle: TextView = itemView.findViewById(R.id.itemCycle)
         private val itemPayMet: TextView = itemView.findViewById(R.id.itemPayMet)
 
+
         fun bind(item: SubscriptionItem) {
+
+            val formatter = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+
             itemName.text = item.name
             itemDesc.text = item.desc
-            itemPayDate.text = item.pay
-            itemAmount.text = item.amount
+            itemPayDate.text = formatter.format(item.pay)
+            itemAmount.text = String.format(Locale.US, "%.2f", item.amount)
             itemCycle.text = item.cycle
             itemPayMet.text = item.payMet
         }

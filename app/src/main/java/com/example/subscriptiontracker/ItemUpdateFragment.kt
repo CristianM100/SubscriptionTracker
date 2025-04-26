@@ -10,7 +10,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-
+import java.text.ParseException
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 
 class ItemUpdateFragment : Fragment() {
@@ -36,12 +39,16 @@ class ItemUpdateFragment : Fragment() {
 
         if (itemPosition != -1) {
             val item = viewModel.getItem(itemPosition)
+
+            val formatter = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+
+
             view.findViewById<EditText>(R.id.updateName).setText(item.name)
             view.findViewById<EditText>(R.id.updateDesc).setText(item.desc)
             view.findViewById<EditText>(R.id.updateCat).setText(item.cat)
-            view.findViewById<EditText>(R.id.updatePay).setText(item.pay)
+            view.findViewById<EditText>(R.id.updatePay).setText(formatter.format(item.pay))
             view.findViewById<EditText>(R.id.updateCycle).setText(item.cycle)
-            view.findViewById<EditText>(R.id.updateAmount).setText(item.amount)
+            view.findViewById<EditText>(R.id.updateAmount).setText(String.format(Locale.US, "%.2f", item.amount))
             view.findViewById<EditText>(R.id.updateCurrency).setText(item.currency)
             view.findViewById<EditText>(R.id.updatePayMet).setText(item.payMet)
             view.findViewById<EditText>(R.id.updateRemind).setText(item.remind)
@@ -52,9 +59,20 @@ class ItemUpdateFragment : Fragment() {
             val name = view.findViewById<EditText>(R.id.updateName).text.toString()
             val desc = view.findViewById<EditText>(R.id.updateDesc).text.toString()
             val cat = view.findViewById<EditText>(R.id.updateCat).text.toString()
-            val pay = view.findViewById<EditText>(R.id.updatePay).text.toString()
+
+            val payString = view.findViewById<EditText>(R.id.updatePay).text.toString()
+            val formatter = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+            val pay = try {
+                formatter.parse(payString) ?: Date()
+            } catch (e: ParseException) {
+                Date()
+            }
+
             val cycle = view.findViewById<EditText>(R.id.updateCycle).text.toString()
-            val amount = view.findViewById<EditText>(R.id.updateAmount).text.toString()
+
+            val amountString = view.findViewById<EditText>(R.id.updateAmount).text.toString()
+            val amount = amountString.toDoubleOrNull() ?: 0.0
+
             val currency = view.findViewById<EditText>(R.id.updateCurrency).text.toString()
             val payMet = view.findViewById<EditText>(R.id.updatePayMet).text.toString()
             val remind = view.findViewById<EditText>(R.id.updateRemind).text.toString()
