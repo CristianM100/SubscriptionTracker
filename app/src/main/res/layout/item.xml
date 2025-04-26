@@ -94,6 +94,7 @@
         app:layout_constraintTop_toBottomOf="@id/itemCycle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
