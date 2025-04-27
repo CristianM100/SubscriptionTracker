@@ -6,7 +6,7 @@
     <string name="name">Name</string>
     <string name="description">Description</string>
     <string name="category">Category</string>
-    <string name="next_payment">Next Payment</string>
+    <string name="next_payment">Next Payment (dd/mm/yyyy)</string>
     <string name="cycle">cycle</string>
     <string name="amount">Amount</string>
     <string name="currency">Currency</string>
@@ -14,7 +14,7 @@
     <string name="delete">Delete</string>
     <string name="update">Update</string>
     <string name="pause">Pause</string>
-    <string name="remind_me">Remind me</string>
+    <string name="remind_me">Remind me (1 h before, i day before)</string>
     <string name="save">Save</string>
     <string name="calendar_icon">Calendar</string>
     <string name="clock_icon">"Clock "</string>
