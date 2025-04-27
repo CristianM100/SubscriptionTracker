@@ -12,6 +12,7 @@ constraintlayout = "2.2.1"
 androidx-recyclerview = "1.4.0"
 androidx-lifecycle = "2.8.7"
 androidx-navigation = "2.8.9"
+roomVersion = "2.7.1"
 
 
 [libraries]
@@ -28,6 +29,9 @@ androidx-lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmode
 androidx-lifecycle-livedata = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "androidx-lifecycle" }
 androidx-navigation-fragment = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "androidx-navigation" }
 androidx-navigation-ui = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "androidx-navigation" }
+room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomVersion" }
+room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomVersion" }
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
