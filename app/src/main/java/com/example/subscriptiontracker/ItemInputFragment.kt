@@ -1,4 +1,5 @@
 package com.example.subscriptiontracker
+
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -44,7 +45,7 @@ class ItemInputFragment : Fragment() {
             val pay = try {
                 formatter.parse(payString) ?: Date()
             } catch (e: ParseException) {
-                Date() // fallback to current date
+                Date()
             }
 
             val cycle = view.findViewById<EditText>(R.id.newCycle).text.toString()
@@ -57,8 +58,8 @@ class ItemInputFragment : Fragment() {
             val remind = view.findViewById<EditText>(R.id.newRemind).text.toString()
 
             val newItem = SubscriptionItem(name, desc, cat, pay, cycle, amount, currency, payMet, remind)
-            viewModel.addItem(newItem)
 
+            viewModel.addItem(newItem)
             findNavController().navigateUp()
 
         }

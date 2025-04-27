@@ -1,37 +1,29 @@
 package com.example.subscriptiontracker
 
+import android.app.Application
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.launch
+import androidx.lifecycle.*
 
-class SubscriptionViewModel : ViewModel() {
 
-    private val _items = MutableLiveData<List<SubscriptionItem>>()
-    val items: LiveData<List<SubscriptionItem>> get() = _items
+class SubscriptionViewModel(private val repository: SubscriptionRepository) : ViewModel() {
 
-    private val itemList = mutableListOf<SubscriptionItem>()
+    val items: LiveData<List<SubscriptionItem>> = repository.allSubscriptions
 
-    init {
-        _items.value = itemList
+    fun addItem(item: SubscriptionItem) = viewModelScope.launch {
+        repository.insert(item)
     }
 
-    fun addItem(item: SubscriptionItem) {
-        itemList.add(item)
-        _items.value = itemList
+    fun updateItem(item: SubscriptionItem) = viewModelScope.launch {
+        repository.update(item)
     }
 
-    fun updateItem(position: Int, item: SubscriptionItem) {
-        itemList[position] = item
-        _items.value = itemList
-    }
-
-    fun deleteItem(position: Int) {
-        itemList.removeAt(position)
-        _items.value = itemList
-    }
-
-    fun getItem(position: Int): SubscriptionItem {
-        return itemList[position]
+    fun deleteItem(item: SubscriptionItem) = viewModelScope.launch {
+        repository.delete(item)
     }
 }
+
+
+
 

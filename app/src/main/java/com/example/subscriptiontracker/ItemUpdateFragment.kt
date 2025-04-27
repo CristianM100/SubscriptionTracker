@@ -8,12 +8,15 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.room.InvalidationTracker
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
+
 
 
 class ItemUpdateFragment : Fragment() {
@@ -38,20 +41,23 @@ class ItemUpdateFragment : Fragment() {
         }
 
         if (itemPosition != -1) {
-            val item = viewModel.getItem(itemPosition)
+            // Observe the items list and retrieve the item at the position
+            viewModel.items.observe(viewLifecycleOwner, Observer { items ->
+                if (items != null && itemPosition in items.indices) {
+                    val item = items[itemPosition]
+                    val formatter = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
 
-            val formatter = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-
-
-            view.findViewById<EditText>(R.id.updateName).setText(item.name)
-            view.findViewById<EditText>(R.id.updateDesc).setText(item.desc)
-            view.findViewById<EditText>(R.id.updateCat).setText(item.cat)
-            view.findViewById<EditText>(R.id.updatePay).setText(formatter.format(item.pay))
-            view.findViewById<EditText>(R.id.updateCycle).setText(item.cycle)
-            view.findViewById<EditText>(R.id.updateAmount).setText(String.format(Locale.US, "%.2f", item.amount))
-            view.findViewById<EditText>(R.id.updateCurrency).setText(item.currency)
-            view.findViewById<EditText>(R.id.updatePayMet).setText(item.payMet)
-            view.findViewById<EditText>(R.id.updateRemind).setText(item.remind)
+                    view.findViewById<EditText>(R.id.updateName).setText(item.name)
+                    view.findViewById<EditText>(R.id.updateDesc).setText(item.desc)
+                    view.findViewById<EditText>(R.id.updateCat).setText(item.cat)
+                    view.findViewById<EditText>(R.id.updatePay).setText(formatter.format(item.pay))
+                    view.findViewById<EditText>(R.id.updateCycle).setText(item.cycle)
+                    view.findViewById<EditText>(R.id.updateAmount).setText(String.format(Locale.US, "%.2f", item.amount))
+                    view.findViewById<EditText>(R.id.updateCurrency).setText(item.currency)
+                    view.findViewById<EditText>(R.id.updatePayMet).setText(item.payMet)
+                    view.findViewById<EditText>(R.id.updateRemind).setText(item.remind)
+                }
+            })
         }
 
         val buttonUpdate: Button = view.findViewById(R.id.buttonUpdate)
@@ -78,18 +84,19 @@ class ItemUpdateFragment : Fragment() {
             val remind = view.findViewById<EditText>(R.id.updateRemind).text.toString()
 
             val updatedItem = SubscriptionItem(name, desc, cat, pay, cycle, amount, currency, payMet, remind)
-            viewModel.updateItem(itemPosition, updatedItem)
+            viewModel.updateItem(updatedItem)
 
             findNavController().navigateUp()
         }
 
         val buttonDelete: Button = view.findViewById(R.id.buttonDelete)
         buttonDelete.setOnClickListener {
-            viewModel.deleteItem(itemPosition)
-
-            findNavController().navigateUp()
-
-
+            // Use the updated item directly instead of just position
+            val item = viewModel.items.value?.get(itemPosition)
+            if (item != null) {
+                viewModel.deleteItem(item)
+                findNavController().navigateUp()
+            }
         }
     }
 }

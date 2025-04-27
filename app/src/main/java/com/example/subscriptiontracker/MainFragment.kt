@@ -36,6 +36,19 @@ class MainFragment : Fragment(), SubscriptionAdapter.OnItemClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+       // viewModel = ViewModelProvider(requireActivity())[SubscriptionViewModel::class.java]
+
+        // 1. Create database
+        val database = SubscriptionDatabase.getDatabase(requireContext())
+
+        // 2. Create repository
+        val repository = SubscriptionRepository(database.subscriptionDao())
+
+        // 3. Create ViewModelFactory
+        val factory = SubscriptionViewModelFactory(repository)
+
+        // 4. Create ViewModel
+       // viewModel = ViewModelProvider(this, factory)[SubscriptionViewModel::class.java]
         viewModel = ViewModelProvider(requireActivity())[SubscriptionViewModel::class.java]
 
         val recyclerView: RecyclerView = view.findViewById(R.id.recyclerView)
@@ -47,10 +60,12 @@ class MainFragment : Fragment(), SubscriptionAdapter.OnItemClickListener {
         recyclerView.adapter = adapter
 
         viewModel.items.observe(viewLifecycleOwner) { items ->
-            adapter = SubscriptionAdapter(items, this)
+            adapter = SubscriptionAdapter(items, this)  // This re-creates the adapter every time!
             recyclerView.adapter = adapter
             emptyView.visibility = if (items.isEmpty()) View.VISIBLE else View.GONE
         }
+
+
 
         // Register ActivityResultLauncher
         addItemLauncher = registerForActivityResult(
@@ -85,14 +100,12 @@ class MainFragment : Fragment(), SubscriptionAdapter.OnItemClickListener {
         createTaskButton.setOnClickListener {
             findNavController().navigate(R.id.action_mainFragment_to_itemInputFragment)
         }
-
     }
     override fun onItemClick(position: Int) {
         val bundle = Bundle()
         bundle.putInt("itemPosition", position)
         findNavController().navigate(R.id.action_mainFragment_to_itemUpdateFragment, bundle)
     }
-
 }
 
 
