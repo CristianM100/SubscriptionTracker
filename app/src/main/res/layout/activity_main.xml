@@ -35,5 +35,15 @@
         app:navGraph="@navigation/navigation_graph"
         app:defaultNavHost="true" />
 
+    <!--<Button
+        android:id="@+id/send_button_id"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="150dp"
+        android:text="send"
+        android:textStyle="bold"
+        tools:ignore="MissingConstraints" />-->
+
 </androidx.constraintlayout.widget.ConstraintLayout>
 

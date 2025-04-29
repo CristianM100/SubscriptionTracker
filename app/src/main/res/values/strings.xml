@@ -20,4 +20,5 @@
     <string name="clock_icon">"Clock "</string>
     <string name="action_settings">action_settings</string>
     <string name="subscriptions">Subscriptions</string>
+    <string name="view_chart">View Chart</string>
 </resources>
