@@ -10,6 +10,10 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AlphaAnimation
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
+import android.widget.Button
 import android.widget.TextView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import androidx.activity.result.ActivityResultLauncher
@@ -36,7 +40,13 @@ class MainFragment : Fragment(), SubscriptionAdapter.OnItemClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-       // viewModel = ViewModelProvider(requireActivity())[SubscriptionViewModel::class.java]
+
+        val sendButton: Button = view.findViewById(R.id.btn_view_chart)
+
+        sendButton.setOnClickListener {
+            val intent = Intent(requireContext(), SubscriptionCategoryActivity::class.java)
+            startActivity(intent)
+        }
 
         // 1. Create database
         val database = SubscriptionDatabase.getDatabase(requireContext())

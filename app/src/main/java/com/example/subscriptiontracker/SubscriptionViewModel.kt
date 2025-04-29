@@ -9,7 +9,7 @@ import androidx.lifecycle.*
 
 class SubscriptionViewModel(private val repository: SubscriptionRepository) : ViewModel() {
 
-    val items: LiveData<List<SubscriptionItem>> = repository.allSubscriptions
+    val items: LiveData<List<SubscriptionItem>> = repository.getAllSubscriptions()
 
     fun addItem(item: SubscriptionItem) = viewModelScope.launch {
         repository.insert(item)

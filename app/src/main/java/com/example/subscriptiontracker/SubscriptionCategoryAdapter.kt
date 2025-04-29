@@ -1,6 +1,5 @@
 package com.example.subscriptiontracker
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,8 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import java.text.SimpleDateFormat
 import java.util.Locale
 
-class SubscriptionAdapter(private val items: List<SubscriptionItem>, private val listener: OnItemClickListener) :
-    RecyclerView.Adapter<SubscriptionAdapter.SubscriptionViewHolder>() {
+class SubscriptionCategoryAdapter(private var items: List<SubscriptionItem>, private val listener: OnItemClickListener) :
+    RecyclerView.Adapter<SubscriptionCategoryAdapter.SubscriptionViewHolder>() {
 
     interface OnItemClickListener {
         fun onItemClick(position: Int)
@@ -22,12 +21,17 @@ class SubscriptionAdapter(private val items: List<SubscriptionItem>, private val
     }
 
     override fun onBindViewHolder(holder: SubscriptionViewHolder, position: Int) {
-        var item = items[position]
+        val item = items[position]
         holder.bind(item)
         holder.itemView.setOnClickListener { listener.onItemClick(position) }
     }
 
     override fun getItemCount(): Int = items.size
+
+    fun updateItems(newItems: List<SubscriptionItem>) {
+        items = newItems
+        notifyDataSetChanged()
+    }
 
     inner class SubscriptionViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val itemName: TextView = itemView.findViewById(R.id.itemName)
@@ -37,11 +41,8 @@ class SubscriptionAdapter(private val items: List<SubscriptionItem>, private val
         private val itemCycle: TextView = itemView.findViewById(R.id.itemCycle)
         private val itemPayMet: TextView = itemView.findViewById(R.id.itemPayMet)
 
-
         fun bind(item: SubscriptionItem) {
-
             val formatter = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-
             itemName.text = item.name
             itemDesc.text = item.desc
             itemPayDate.text = formatter.format(item.pay)

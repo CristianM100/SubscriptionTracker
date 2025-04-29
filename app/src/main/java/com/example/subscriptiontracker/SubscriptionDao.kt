@@ -16,5 +16,12 @@ interface SubscriptionDao {
 
     @Delete
     suspend fun delete(item: SubscriptionItem)
+
+    @Query("SELECT * FROM subscription_items ORDER BY cat")
+    fun getSubscriptionsByCategory(): LiveData<List<SubscriptionItem>>
+
+    @Query("SELECT * FROM subscription_items ORDER BY pay")
+    fun getSubscriptionsByPaymentMethod(): LiveData<List<SubscriptionItem>>
+
 }
 

@@ -17,12 +17,3 @@ class SubscriptionViewModelFactory(private val repository: SubscriptionRepositor
 
 
 
-/*
-class SubscriptionViewModelFactory(private val repository: SubscriptionRepository) : ViewModelProvider.Factory {
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(SubscriptionViewModel::class.java)) {
-            return SubscriptionViewModel(repository) as T
-        }
-        throw IllegalArgumentException("Unknown ViewModel class")
-    }
-}*/

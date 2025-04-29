@@ -2,32 +2,34 @@ package com.example.subscriptiontracker
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavController
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.room.Room
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var viewModel: SubscriptionViewModel
 
+  //  lateinit var send_button: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+      /*  send_button = findViewById(R.id.send_button_id)
+
+        val intent = Intent(this, SubscriptionCategoryActivity::class.java)
+        startActivity(intent)*/
+
 
         val database = Room.databaseBuilder(
             applicationContext,
             SubscriptionDatabase::class.java,
             "subscription_database"
-        ).build()
-
+        ).allowMainThreadQueries() // Only for quick tests!
+            .build()
 
         val repository = SubscriptionRepository(database.subscriptionDao())
         val factory = SubscriptionViewModelFactory(repository)
