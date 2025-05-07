@@ -7,3 +7,20 @@
 
     <style name="Theme.SubscriptionTracker" parent="Base.Theme.SubscriptionTracker" />
 </resources>
+
+<!--<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Base.Theme.SubscriptionTracker" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryDark">@color/purple_700</item>
+        <item name="colorAccent">@color/teal_200</item>
+        <item name="android:statusBarColor">@color/purple_700</item>
+    </style>
+
+    <style name="Theme.SubscriptionTracker" parent="Base.Theme.SubscriptionTracker" />
+
+    <color name="purple_500">#a46ede</color>
+    <color name="purple_700">#5f249f</color>
+    <color name="teal_200">#bcf5f5</color>
+    <color name="teal_700">#1bb1b1</color>
+</resources>
+-->

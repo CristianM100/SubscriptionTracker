@@ -9,7 +9,8 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.example.subscriptiontracker.MainFragment"
-        android:label="MainFragment"
+        android:label="SubscriptionTracker"
+        android:textColor="@android:color/white"
         tools:layout="@layout/fragment_main">
 
         <action
@@ -25,14 +26,14 @@
     <fragment
         android:id="@+id/itemInputFragment"
         android:name="com.example.subscriptiontracker.ItemInputFragment"
-        android:label="Item Input Fragment"
+        android:label="Add new subscription"
         tools:layout="@layout/fragment_item_input" />
 
     <!-- Item Update Fragment -->
     <fragment
         android:id="@+id/itemUpdateFragment"
         android:name="com.example.subscriptiontracker.ItemUpdateFragment"
-        android:label="Item Update Fragment"
+        android:label="Edit subscription"
         tools:layout="@layout/fragment_item_update" />
 
 </navigation>

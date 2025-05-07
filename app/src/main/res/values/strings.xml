@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">SubscriptionTracker</string>
     <string name="title">Subscription</string>
-    <string name="noItemText">no subscription yet</string>
+    <string name="noItemText">No subscriptions yet</string>
     <string name="createTask">#ab6d6b</string>
     <string name="name">Name</string>
     <string name="description">Description</string>

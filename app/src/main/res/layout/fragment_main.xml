@@ -9,50 +9,142 @@
     android:orientation="vertical"
     tools:context=".MainFragment">
 
-    <TextView
-        android:id="@+id/mainTitle"
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_category"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="100dp"
+        android:background="?attr/colorPrimary"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/toolbarTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Subscription Tracker"
+            android:textColor="@android:color/white"
+            android:textSize="36sp"
+            android:layout_gravity="bottom|center_horizontal"
+            android:paddingBottom="10dp" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/emptyView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/roboto"
         android:gravity="center_horizontal"
-        android:text="@string/subscriptions"
-        android:background="@color/accentDark"
+        android:text="@string/noItemText"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="@color/titleWhite"
+        android:textSize="18sp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_category" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_category"
+        tools:listitem="@layout/item" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/createTaskButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/fabButtonColor"
+        android:clickable="true"
+        android:contentDescription="@string/createTask"
+        android:focusable="true"
+        android:tint="@color/titleWhite"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@android:drawable/ic_input_add" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/accentDark"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/btn_view_chart"
+            android:layout_width="267dp"
+            android:layout_height="57dp"
+            android:layout_gravity="center"
+            android:text="@string/view_chart" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_category"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="?attr/colorPrimary"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/toolbarTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Subscription Tracker"
+            android:textColor="@android:color/white"
+            android:textSize="36sp"
+            android:layout_gravity="bottom|center_horizontal"
+            android:paddingBottom="10dp" />
+    </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
 
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:gravity="center"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/mainTitle">
+        app:layout_constraintVertical_bias="0.597">
+
 
         <TextView
             android:id="@+id/emptyView"
             android:layout_width="268dp"
-            android:layout_height="57dp"
+            android:layout_height="65dp"
             android:fontFamily="@font/roboto"
             android:gravity="center_horizontal"
             android:text="@string/noItemText"
-            android:visibility="gone"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
             android:textColor="@color/titleWhite"
-            android:textSize="18sp"/>
+            android:textSize="18sp"
+            android:visibility="gone" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="617dp"
+            android:layout_height="570dp"
+            android:layout_marginTop="25dp"
             android:layout_marginLeft="7dp"
             android:layout_marginRight="7dp"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout"
@@ -64,7 +156,6 @@
             tools:listitem="@layout/item" />
 
     </LinearLayout>
-
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/createTaskButton"
@@ -98,12 +189,12 @@
 
         <Button
             android:id="@+id/btn_view_chart"
-            android:layout_width="wrap_content"
+            android:layout_width="267dp"
             android:layout_height="70dp"
             android:layout_gravity="center"
             android:layout_marginTop="0dp"
-            android:text="@string/view_chart"
-            tools:ignore="MissingConstraints" />
+            android:text="@string/view_chart" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+-->

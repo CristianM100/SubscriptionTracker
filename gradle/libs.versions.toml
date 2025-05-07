@@ -13,11 +13,13 @@ androidx-recyclerview = "1.4.0"
 androidx-lifecycle = "2.8.7"
 androidx-navigation = "2.8.9"
 mpandroidchart = "v3.1.0"
+recyclerviewSelection = "1.1.0"
 roomVersion = "2.7.1"
 
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-recyclerview-selection = { module = "androidx.recyclerview:recyclerview-selection", version.ref = "recyclerviewSelection" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
