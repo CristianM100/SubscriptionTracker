@@ -22,7 +22,7 @@ class SubscriptionAdapter(private val items: List<SubscriptionItem>, private val
     }
 
     override fun onBindViewHolder(holder: SubscriptionViewHolder, position: Int) {
-        var item = items[position]
+        val item = items[position]
         holder.bind(item)
         holder.itemView.setOnClickListener { listener.onItemClick(position) }
     }
@@ -36,7 +36,6 @@ class SubscriptionAdapter(private val items: List<SubscriptionItem>, private val
         private val itemAmount: TextView = itemView.findViewById(R.id.itemAmount)
         private val itemCycle: TextView = itemView.findViewById(R.id.itemCycle)
         private val itemPayMet: TextView = itemView.findViewById(R.id.itemPayMet)
-
 
         fun bind(item: SubscriptionItem) {
 

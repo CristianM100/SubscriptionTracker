@@ -76,7 +76,6 @@ class MainFragment : Fragment(), SubscriptionAdapter.OnItemClickListener {
         }
 
 
-
         // Register ActivityResultLauncher
         addItemLauncher = registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()
