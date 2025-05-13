@@ -10,33 +10,33 @@ import java.util.Date
 @Parcelize
 @Entity(tableName = "subscription_items")
 data class SubscriptionItem(
-   /*@PrimaryKey(autoGenerate = true)
-    val id: Int = 0,*/
-   @PrimaryKey
-    @ColumnInfo(name = "name")
-    val name: String,
+ @PrimaryKey(autoGenerate = true)
+ var subscriptionId: Int = 0,
 
-    @ColumnInfo(name = "desc")
-    val desc: String,
+ @ColumnInfo(name = "name")
+ val name: String,
 
-    @ColumnInfo(name = "cat")
-    val cat: String,
+ @ColumnInfo(name = "desc")
+ val desc: String,
 
-    @ColumnInfo(name = "pay")
-    val pay: Date,
+ @ColumnInfo(name = "cat")
+ val cat: String,
 
-    @ColumnInfo(name = "cycle")
-    val cycle: String,
+ @ColumnInfo(name = "pay")
+ val pay: Date,
 
-    @ColumnInfo(name = "amount")
-    val amount: Double,
+ @ColumnInfo(name = "cycle")
+ val cycle: String,
 
-    @ColumnInfo(name = "currency")
-    val currency: String,
+ @ColumnInfo(name = "amount")
+ val amount: Double,
 
-    @ColumnInfo(name = "pay_met")
-    val payMet: String,
+ @ColumnInfo(name = "currency")
+ val currency: String,
 
-    @ColumnInfo(name = "remind")
-    val remind: String
+ @ColumnInfo(name = "pay_met")
+ val payMet: String,
+
+ @ColumnInfo(name = "remind")
+ val remind: String
 ) : Parcelable

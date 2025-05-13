@@ -10,9 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.AlphaAnimation
-import android.view.animation.Animation
-import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.TextView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -100,7 +97,7 @@ class MainFragment : Fragment(), SubscriptionAdapter.OnItemClickListener {
                     val payMet = data.getStringExtra("NEW_ITEM_PAYMET") ?: ""
                     val remind = data.getStringExtra("NEW_ITEM_REMIND") ?: ""
 
-                    val newItem = SubscriptionItem(name, desc, cat, pay, cycle, amount, currency, payMet, remind)
+                    val newItem = SubscriptionItem(0, name, desc, cat, pay, cycle, amount, currency, payMet, remind)
                     viewModel.addItem(newItem)
                 }
             }

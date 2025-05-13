@@ -1,17 +1,13 @@
 package com.example.subscriptiontracker
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 import androidx.navigation.fragment.findNavController
 import java.text.ParseException
 import java.text.SimpleDateFormat
@@ -61,7 +57,7 @@ class ItemInputFragment : Fragment() {
             val payMet = view.findViewById<EditText>(R.id.newPayMet).text.toString()
             val remind = view.findViewById<EditText>(R.id.newRemind).text.toString()
 
-            val newItem = SubscriptionItem(name, desc, cat, pay, cycle, amount, currency, payMet, remind)
+            val newItem = SubscriptionItem(0, name, desc, cat, pay, cycle, amount, currency, payMet, remind)
 
             viewModel.addItem(newItem)
             findNavController().navigateUp()
