@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".ItemUpdateFragment">
 
-    <androidx.appcompat.widget.Toolbar
+ <!--   <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_category"
         android:layout_width="match_parent"
         android:layout_height="100dp"
@@ -25,7 +25,7 @@
             android:textSize="36sp"
             android:layout_gravity="bottom|center_horizontal"
             android:paddingBottom="10dp" />
-    </androidx.appcompat.widget.Toolbar>
+    </androidx.appcompat.widget.Toolbar>-->
 
     <EditText
         android:id="@+id/updateName"
