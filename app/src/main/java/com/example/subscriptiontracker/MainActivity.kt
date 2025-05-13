@@ -1,76 +1,109 @@
 package com.example.subscriptiontracker
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.NavigationUI
 import androidx.room.Room
-
+import com.google.android.material.navigation.NavigationView
+import androidx.appcompat.widget.Toolbar  // Import Toolbar for setting it as ActionBar
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var viewModel: SubscriptionViewModel
+    private lateinit var viewModel: SubscriptionViewModel
+    private lateinit var navController: NavController
+    private lateinit var appBarConfiguration: AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Set up the toolbar
-   /*     val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
-// IMPORTANT: Wait until the view is fully inflated before getting the NavController
+        // Set up NavController
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
 
-// Define top-level destinations for AppBarConfiguration
-        val appBarConfig = AppBarConfiguration(setOf(R.id.mainFragment))
+        // Initial AppBarConfiguration for non-home fragments
+        appBarConfiguration = AppBarConfiguration(
+            setOf(R.id.nav_home), // Home is the only top-level fragment
+            null // No drawer layout for home fragment
+        )
 
-// Connect the NavController with the Toolbar
-        setupActionBarWithNavController(navController, appBarConfig)
+        // Set up the action bar with NavController
+        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration)
 
-// Observe NavController destination changes to update Toolbar title dynamically
+        // Listen for destination changes
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            // Update Toolbar title based on fragment's label
-            supportActionBar?.title = destination.label
+            if (destination.id == R.id.nav_home) {
+                // Hide the back arrow (ensure it's only hidden for the home page)
+                supportActionBar?.setDisplayHomeAsUpEnabled(false)
+                supportActionBar?.setHomeButtonEnabled(false)
+            } else {
+                // Show the back arrow for other fragments
+                supportActionBar?.setDisplayHomeAsUpEnabled(true)
+                supportActionBar?.setHomeButtonEnabled(true)
+            }
         }
-*/
+
+        // Initialize Room database (as before)
         val database = Room.databaseBuilder(
             applicationContext,
             SubscriptionDatabase::class.java,
             "subscription_database"
-        ).allowMainThreadQueries() // Only for quick tests!
-            .build()
+        ).allowMainThreadQueries().build()
 
         val repository = SubscriptionRepository(database.subscriptionDao())
         val factory = SubscriptionViewModelFactory(repository)
-
         viewModel = ViewModelProvider(this, factory)[SubscriptionViewModel::class.java]
     }
 
-  /*  override fun onSupportNavigateUp(): Boolean {
-        return navController.navigateUp() || super.onSupportNavigateUp()
-    }*/
+    override fun onSupportNavigateUp(): Boolean {
+        // Get the current destination id from the NavController
+        val currentFragmentId = navController.currentDestination?.id
+
+        return when {
+            // If we're on MainFragment, navigate to SubscriptionCategoryActivity
+            currentFragmentId == R.id.mainFragment -> {
+                // Start SubscriptionCategoryActivity when the back arrow is pressed from MainFragment
+                val intent = Intent(this, SubscriptionCategoryActivity::class.java)
+                startActivity(intent)
+                true // Indicating that the navigation action was handled
+            }
+            // If we're on another fragment, navigate back to the Main Fragment (R.id.mainFragment)
+            else -> {
+                // Go back to the previous fragment using NavController
+                navController.navigateUp()
+                true
+            }
+        }
+    }
+
+
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.toolbar_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_help -> {
+                Toast.makeText(this, "Help clicked", Toast.LENGTH_SHORT).show()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
 }
 
 
-
-
-
-
-
-/* setSupportActionBar(findViewById(R.id.toolbar))
-       val navController = findNavController(R.id.nav_host_fragment)
-       val config = AppBarConfiguration(navController.graph)
-
-       findViewById<Toolbar>(R.id.toolbar).setupWithNavController(navController, config);
-*/
-/*  send_button = findViewById(R.id.send_button_id)
-
-  val intent = Intent(this, SubscriptionCategoryActivity::class.java)
-  startActivity(intent)*/
