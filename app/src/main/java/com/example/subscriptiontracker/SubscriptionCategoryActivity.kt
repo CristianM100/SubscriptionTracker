@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.InvalidationTracker
 import com.github.mikephil.charting.charts.PieChart
+import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
@@ -48,17 +49,29 @@ class SubscriptionCategoryActivity : AppCompatActivity() {
 
             }
 
+            val legend = pieChart.legend
+            legend.isEnabled = true
+            legend.verticalAlignment = Legend.LegendVerticalAlignment.BOTTOM
+            legend.horizontalAlignment = Legend.LegendHorizontalAlignment.CENTER
+            legend.orientation = Legend.LegendOrientation.HORIZONTAL
+            legend.setDrawInside(false)
+            legend.textSize = 20f
+
             val dataSet = PieDataSet(entries, "")
             dataSet.setColors(ColorTemplate.MATERIAL_COLORS, 255) // You can customize colors
 
             val data = PieData(dataSet)
-            data.setValueTextSize(14f)
+            data.setValueTextSize(15f)
 
             pieChart.data = data
             pieChart.description.isEnabled = false
-            pieChart.centerText = "Total Amount"
+            pieChart.centerText = "Monthly Average(%)"
+            pieChart.setCenterTextSize(25f)
             pieChart.setUsePercentValues(true)
             pieChart.animateY(1000)
+            legend.setDrawInside(false)
+            legend.yOffset = 50f
+            pieChart.setExtraOffsets(10f, 30f, 10f, 30f)
             pieChart.invalidate() // refresh chart
         }
 
