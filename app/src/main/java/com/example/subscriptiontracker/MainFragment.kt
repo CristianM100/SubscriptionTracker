@@ -3,6 +3,7 @@ package com.example.subscriptiontracker
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -93,11 +94,15 @@ class MainFragment : Fragment(), SubscriptionAdapter.OnItemClickListener {
                     val cycle = data.getStringExtra("NEW_ITEM_CYCLE") ?: ""
                     val amountString = data.getStringExtra("NEW_ITEM_AMOUNT") ?: "0"
                     val amount = amountString.toDoubleOrNull() ?: 0.0
+
                     val currency = data.getStringExtra("NEW_ITEM_CURRENCY") ?: ""
                     val payMet = data.getStringExtra("NEW_ITEM_PAYMET") ?: ""
                     val remind = data.getStringExtra("NEW_ITEM_REMIND") ?: ""
 
                     val newItem = SubscriptionItem(0, name, desc, cat, pay, cycle, amount, currency, payMet, remind)
+                   // val newItem = SubscriptionItem(0, name, desc, cat, pay, cycle, amount,  payMet, remind)
+
+
                     viewModel.addItem(newItem)
                 }
             }

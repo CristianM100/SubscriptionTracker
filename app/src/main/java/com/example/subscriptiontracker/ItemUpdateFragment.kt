@@ -52,7 +52,7 @@ class ItemUpdateFragment : Fragment() {
                     view.findViewById<EditText>(R.id.updatePay).setText(formatter.format(item.pay))
                     view.findViewById<EditText>(R.id.updateCycle).setText(item.cycle)
                     view.findViewById<EditText>(R.id.updateAmount).setText(String.format(Locale.US, "%.2f", item.amount))
-                    view.findViewById<EditText>(R.id.updateCurrency).setText(item.currency)
+                  //  view.findViewById<EditText>(R.id.updateCurrency).setText(item.currency)
                     view.findViewById<EditText>(R.id.updatePayMet).setText(item.payMet)
                     view.findViewById<EditText>(R.id.updateRemind).setText(item.remind)
                 }
@@ -85,6 +85,9 @@ class ItemUpdateFragment : Fragment() {
                 val remind = view.findViewById<EditText>(R.id.updateRemind).text.toString()
 
                 val updatedItem = SubscriptionItem(subscriptionId, name, desc, cat, pay, cycle, amount, currency, payMet, remind)
+               // val updatedItem = SubscriptionItem(subscriptionId, name, desc, cat, pay, cycle, amount, payMet, remind)
+
+
                 viewModel.updateItem(updatedItem)
                 findNavController().navigateUp()
             }

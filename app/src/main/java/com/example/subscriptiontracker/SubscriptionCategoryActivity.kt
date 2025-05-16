@@ -10,6 +10,7 @@ import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
+import com.github.mikephil.charting.formatter.ValueFormatter
 import com.github.mikephil.charting.utils.ColorTemplate
 
 class SubscriptionCategoryActivity : AppCompatActivity() {
@@ -60,8 +61,16 @@ class SubscriptionCategoryActivity : AppCompatActivity() {
             val dataSet = PieDataSet(entries, "")
             dataSet.setColors(ColorTemplate.MATERIAL_COLORS, 255) // You can customize colors
 
+           // val data = PieData(dataSet)
+            //data.setValueTextSize(15f)
             val data = PieData(dataSet)
             data.setValueTextSize(15f)
+            data.setValueFormatter(object : ValueFormatter() {
+                override fun getFormattedValue(value: Float): String {
+                    return String.format("%.1f%%", value) // One decimal place + percent symbol
+                }
+            })
+
 
             pieChart.data = data
             pieChart.description.isEnabled = false

@@ -57,7 +57,11 @@ class ItemInputFragment : Fragment() {
             val payMet = view.findViewById<EditText>(R.id.newPayMet).text.toString()
             val remind = view.findViewById<EditText>(R.id.newRemind).text.toString()
 
+            android.util.Log.d("ItemInputFragment", "Creating new subscription - Name: $name, Amount: $amount, Currency: $currency")
+
             val newItem = SubscriptionItem(0, name, desc, cat, pay, cycle, amount, currency, payMet, remind)
+           // val newItem = SubscriptionItem(0, name, desc, cat, pay, cycle, amount, payMet, remind)
+
 
             viewModel.addItem(newItem)
             findNavController().navigateUp()
