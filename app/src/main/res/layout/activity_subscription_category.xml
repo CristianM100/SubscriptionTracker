@@ -11,18 +11,6 @@
         android:layout_height="match_parent"
         android:padding="16dp" />
 
-   <!-- <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="?attr/colorPrimary"
-        android:textSize="24sp"
-        app:titleTextColor="@android:color/white"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:title="Subscription Tracker" /> -->
-
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_category"
         android:layout_width="match_parent"
@@ -41,9 +29,8 @@
             android:textSize="36sp"
             android:layout_gravity="bottom|center_horizontal"
             android:paddingBottom="10dp" />
+
     </androidx.appcompat.widget.Toolbar>
-
-
 
     <com.github.mikephil.charting.charts.PieChart
         android:id="@+id/pieChart"

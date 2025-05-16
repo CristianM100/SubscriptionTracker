@@ -5,10 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     app:startDestination="@id/mainFragment">
 
-    <!-- Main Fragment -->
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.example.subscriptiontracker.MainFragment"
+        android:name="com.example.subscriptiontracker.ui.main.MainFragment"
         android:label="SubscriptionTracker"
         android:textColor="@android:color/white"
         tools:layout="@layout/fragment_main">
@@ -22,17 +21,15 @@
             app:destination="@id/itemUpdateFragment" />
     </fragment>
 
-    <!-- Item Input Fragment -->
     <fragment
         android:id="@+id/itemInputFragment"
-        android:name="com.example.subscriptiontracker.ItemInputFragment"
+        android:name="com.example.subscriptiontracker.ui.input.ItemInputFragment"
         android:label="Add new subscription"
         tools:layout="@layout/fragment_item_input" />
 
-    <!-- Item Update Fragment -->
     <fragment
         android:id="@+id/itemUpdateFragment"
-        android:name="com.example.subscriptiontracker.ItemUpdateFragment"
+        android:name="com.example.subscriptiontracker.ui.update.ItemUpdateFragment"
         android:label="Edit subscription"
         tools:layout="@layout/fragment_item_update" />
 
