@@ -1,27 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="colorSelector">#f9e1b1</color>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
-    <color name="accentDark">#9fc5e8</color>
-    <color name="statusBar">#14171A</color>
+    <color name="colorPrimary">#4293f5</color>
+    <color name="colorPrimaryDark">#3276c9</color>
     <color name="mainBG">#9fc5e8</color>
     <color name="widgetColor">#3d85c6</color>
     <color name="titleWhite">#F7F7F7</color>
-    <color name="titlecolor">#CDDC39</color>
-    <color name="descolor">#40C4FF</color>
-    <color name="timecolor">#FF9800</color>
-    <color name="TextBoxColor">#cfe2f3</color>
-    <color name="ButtonColor">#BCD514</color>
-    <color name="createButtonColor">#904CDD0E</color>
-    <color name="deleteButtonColor">#88EA0404</color>
-    <color name="fabButtonColor">#4CDD0E</color>
-    <color name="emptyMessageTextColor">#409B2929</color>
-    <color name="circle_blue">#2957e3</color>
-    <color name="circle_green">#29e370</color>
-    <color name="circle_purple">#ca29e3</color>
-    <color name="circle_red">#e32951</color>
+    <color name="viewChartButton">#904CDD0E</color>
+    <color name="deleteButtonColor">#F44336</color>
+    <color name="emptyMessageTextColor">#BAB33838</color>
+
 </resources>

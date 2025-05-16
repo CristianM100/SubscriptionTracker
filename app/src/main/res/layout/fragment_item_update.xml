@@ -99,7 +99,7 @@
 
     <EditText
         android:id="@+id/updateAmount"
-        android:layout_width="180dp"
+        android:layout_width="158dp"
         android:layout_height="45dp"
         android:layout_marginTop="450dp"
         android:ems="10"
@@ -118,7 +118,7 @@
         android:layout_marginTop="450dp"
         android:ems="10"
         android:inputType="text"
-        android:hint="@string/currency"
+        android:text="@string/currencyEuro"
         app:layout_constraintHorizontal_bias="0.91"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -159,6 +159,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="652dp"
         android:text="@string/update"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@color/titleWhite"
         app:layout_constraintHorizontal_bias="0.934"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -170,12 +172,14 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="652dp"
         android:text="@string/delete"
+        android:background="@color/deleteButtonColor"
+        android:textColor="@color/titleWhite"
         app:layout_constraintHorizontal_bias="0.062"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+   <!-- <Button
         android:id="@+id/buttonPause"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -184,6 +188,6 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
